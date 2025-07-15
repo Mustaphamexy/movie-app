@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import MovieCard from '../components/UI/MovieCard';
-import { searchMovies, discoverMovies, getGenres } from '../services/api';
+import { searchMovies, discoverMovies, getGenres, getMovieDetails } from '../services/api';
 import Navbar from '../components/UI/Navbar';
+import RatingStars from '../components/UI/RatingStars';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -19,8 +20,29 @@ const SearchResults = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   const query = searchParams.get('query');
+
+  // Load watchlist and favorites from localStorage
+  useEffect(() => {
+    const savedWatchlist = localStorage.getItem('watchlist');
+    const savedFavorites = localStorage.getItem('favorites');
+    
+    if (savedWatchlist) setWatchlist(JSON.parse(savedWatchlist));
+    if (savedFavorites) setFavorites(JSON.parse(savedFavorites));
+  }, []);
+
+  // Save to localStorage when watchlist or favorites change
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+  }, [watchlist]);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   // Fetch genres on component mount
   useEffect(() => {
@@ -93,13 +115,68 @@ const SearchResults = () => {
     fetchSearchResults();
   }, [query, navigate, filters, currentPage, genres]);
 
+  const handleMovieClick = async (movie) => {
+    try {
+      setLoading(true);
+      const details = await getMovieDetails(movie.id);
+      
+      const director = details.credits?.crew?.find(
+        person => person.job === 'Director'
+      )?.name || 'Unknown';
+
+      const cast = details.credits?.cast
+        ?.slice(0, 5)
+        .map(actor => actor.name) || [];
+
+      const genres = details.genres?.map(genre => genre.name).join(', ') || 'N/A';
+
+      setSelectedMovie({
+        ...movie,
+        director,
+        cast,
+        genres,
+        runtime: details.runtime ? `${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m` : 'N/A',
+        backdrop: details.backdrop_path 
+          ? `https://image.tmdb.org/t/p/original${details.backdrop_path}`
+          : 'https://via.placeholder.com/1920x1080?text=No+Backdrop',
+        budget: details.budget ? `$${details.budget.toLocaleString()}` : 'N/A',
+        revenue: details.revenue ? `$${details.revenue.toLocaleString()}` : 'N/A',
+      });
+      setLoading(false);
+    } catch (err) {
+      setError('Failed to load movie details');
+      setLoading(false);
+      console.error(err);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedMovie(null);
+  };
+
+  const handleWatchlistToggle = (movieId) => {
+    setWatchlist(prev => 
+      prev.includes(movieId) 
+        ? prev.filter(id => id !== movieId)
+        : [...prev, movieId]
+    );
+  };
+
+  const handleFavoriteToggle = (movieId) => {
+    setFavorites(prev => 
+      prev.includes(movieId) 
+        ? prev.filter(id => id !== movieId)
+        : [...prev, movieId]
+    );
+  };
+
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters(prev => ({
       ...prev,
       [name]: value
     }));
-    setCurrentPage(1); // Reset to first page when filters change
+    setCurrentPage(1);
   };
 
   const resetFilters = () => {
@@ -112,7 +189,7 @@ const SearchResults = () => {
     setCurrentPage(1);
   };
 
-  if (loading) {
+  if (loading && !selectedMovie) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-[#0ff0fc] text-xl">
@@ -225,6 +302,11 @@ const SearchResults = () => {
                 <MovieCard
                   key={movie.id}
                   movie={movie}
+                  onMovieClick={handleMovieClick}
+                  onWatchlistToggle={handleWatchlistToggle}
+                  onFavoriteToggle={handleFavoriteToggle}
+                  isInWatchlist={watchlist.includes(movie.id)}
+                  isInFavorites={favorites.includes(movie.id)}
                 />
               ))}
             </div>
@@ -254,6 +336,105 @@ const SearchResults = () => {
           <div className="text-center py-16">
             <h2 className="text-2xl text-[#f0f0f0] mb-4">No results found for "{query}"</h2>
             <p className="text-[#a0aec0]">Try adjusting your filters or using a different search term</p>
+          </div>
+        )}
+
+        {/* Movie Detail Modal */}
+        {selectedMovie && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div className="bg-[#1a1a1a] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="relative">
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 text-[#a0aec0] hover:text-[#f0f0f0] text-2xl z-10"
+                >
+                  ×
+                </button>
+                <div className="relative h-64 w-full">
+                  <img 
+                    src={selectedMovie.backdrop} 
+                    alt={selectedMovie.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/1920x1080?text=No+Backdrop';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/80 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 flex items-end">
+                    <img 
+                      src={selectedMovie.poster} 
+                      alt={selectedMovie.title}
+                      className="w-24 h-36 object-cover rounded shadow-lg mr-4"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/500x750?text=No+Poster';
+                      }}
+                    />
+                    <div>
+                      <h2 className="text-2xl font-bold text-[#f0f0f0]">
+                        {selectedMovie.title} ({selectedMovie.year})
+                      </h2>
+                      <div className="flex items-center space-x-2 mt-1">
+                        <RatingStars rating={Math.round(selectedMovie.rating / 2)} />
+                        <span className="text-[#f0f0f0]">{selectedMovie.rating.toFixed(1)}/10</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-2">
+                    <h3 className="text-xl font-bold text-[#f0f0f0] mb-4">Overview</h3>
+                    <p className="text-[#a0aec0]">
+                      {selectedMovie.overview || 'No overview available.'}
+                    </p>
+                    
+                    <div className="mt-6">
+                      <h3 className="text-xl font-bold text-[#f0f0f0] mb-4">Details</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-[#0ff0fc]">Director</p>
+                          <p className="text-[#a0aec0]">{selectedMovie.director}</p>
+                        </div>
+                        <div>
+                          <p className="text-[#0ff0fc]">Runtime</p>
+                          <p className="text-[#a0aec0]">{selectedMovie.runtime}</p>
+                        </div>
+                        <div>
+                          <p className="text-[#0ff0fc]">Budget</p>
+                          <p className="text-[#a0aec0]">{selectedMovie.budget}</p>
+                        </div>
+                        <div>
+                          <p className="text-[#0ff0fc]">Revenue</p>
+                          <p className="text-[#a0aec0]">{selectedMovie.revenue}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-[#f0f0f0] mb-4">Genres</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedMovie.genres.split(', ').map((genre, index) => (
+                        <span 
+                          key={index} 
+                          className="px-3 py-1 bg-[#0ff0fc]/10 text-[#0ff0fc] rounded-full text-sm"
+                        >
+                          {genre}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-[#f0f0f0] mt-6 mb-4">Cast</h3>
+                    <ul className="space-y-2 text-[#a0aec0]">
+                      {selectedMovie.cast.map((actor, index) => (
+                        <li key={index}>{actor}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
