@@ -1,0 +1,428 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "The Matrix",
+      "year": 1999,
+      "genre": "Sci-Fi",
+      "rating": 8.7,
+      "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=450&fit=crop&crop=faces",
+      "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+      "director": "The Wachowskis",
+      "cast": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+      "duration": "136 min",
+      "releaseDate": "1999-03-31",
+      "country": "USA",
+      "language": "English",
+      "budget": "$63 million",
+      "boxOffice": "$467.2 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "MovieFan2024",
+          "rating": 5,
+          "comment": "Amazing sci-fi masterpiece! Revolutionary visual effects.",
+          "date": "2024-01-15"
+        },
+        {
+          "id": 2,
+          "user": "CinemaLover",
+          "rating": 4,
+          "comment": "Great visuals and story. Changed cinema forever.",
+          "date": "2024-01-10"
+        },
+        {
+          "id": 3,
+          "user": "SciFiExpert",
+          "rating": 5,
+          "comment": "Philosophical depth meets incredible action sequences.",
+          "date": "2024-01-05"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Interstellar",
+      "year": 2014,
+      "genre": "Drama",
+      "rating": 8.6,
+      "poster": "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=300&h=450&fit=crop&crop=faces",
+      "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "director": "Christopher Nolan",
+      "cast": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
+      "duration": "169 min",
+      "releaseDate": "2014-11-07",
+      "country": "USA",
+      "language": "English",
+      "budget": "$165 million",
+      "boxOffice": "$701.8 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "SpaceExplorer",
+          "rating": 5,
+          "comment": "Mind-bending experience! Scientifically accurate.",
+          "date": "2024-01-20"
+        },
+        {
+          "id": 2,
+          "user": "FilmCritic",
+          "rating": 4,
+          "comment": "Visually stunning but emotionally complex.",
+          "date": "2024-01-18"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Inception",
+      "year": 2010,
+      "genre": "Thriller",
+      "rating": 8.8,
+      "poster": "https://images.unsplash.com/photo-1489599511551-8146c4e10ab8?w=300&h=450&fit=crop&crop=faces",
+      "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+      "director": "Christopher Nolan",
+      "cast": ["Leonardo DiCaprio", "Marion Cotillard", "Tom Hardy"],
+      "duration": "148 min",
+      "releaseDate": "2010-07-16",
+      "country": "USA",
+      "language": "English",
+      "budget": "$160 million",
+      "boxOffice": "$836.8 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "DreamWatcher",
+          "rating": 5,
+          "comment": "Complex and brilliant! Layers within layers.",
+          "date": "2024-01-25"
+        },
+        {
+          "id": 2,
+          "user": "ActionFan",
+          "rating": 5,
+          "comment": "Perfect thriller. Multiple viewings required.",
+          "date": "2024-01-22"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Pulp Fiction",
+      "year": 1994,
+      "genre": "Crime",
+      "rating": 8.9,
+      "poster": "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=450&fit=crop&crop=faces",
+      "description": "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+      "director": "Quentin Tarantino",
+      "cast": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+      "duration": "154 min",
+      "releaseDate": "1994-10-14",
+      "country": "USA",
+      "language": "English",
+      "budget": "$8.5 million",
+      "boxOffice": "$214.2 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "CrimeFan",
+          "rating": 5,
+          "comment": "Tarantino's masterpiece! Iconic dialogue.",
+          "date": "2024-01-12"
+        },
+        {
+          "id": 2,
+          "user": "ClassicLover",
+          "rating": 4,
+          "comment": "Iconic film. Non-linear storytelling at its best.",
+          "date": "2024-01-08"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "The Dark Knight",
+      "year": 2008,
+      "genre": "Action",
+      "rating": 9.0,
+      "poster": "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=300&h=450&fit=crop&crop=faces",
+      "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
+      "director": "Christopher Nolan",
+      "cast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+      "duration": "152 min",
+      "releaseDate": "2008-07-18",
+      "country": "USA",
+      "language": "English",
+      "budget": "$185 million",
+      "boxOffice": "$1.005 billion",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "BatmanFan",
+          "rating": 5,
+          "comment": "Best superhero movie ever! Heath Ledger's Joker is unforgettable.",
+          "date": "2024-01-30"
+        },
+        {
+          "id": 2,
+          "user": "ActionHero",
+          "rating": 5,
+          "comment": "Ledger's performance is legendary. Perfect superhero film.",
+          "date": "2024-01-28"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Forrest Gump",
+      "year": 1994,
+      "genre": "Drama",
+      "rating": 8.8,
+      "poster": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=450&fit=crop&crop=faces",
+      "description": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold from the perspective of an Alabama man.",
+      "director": "Robert Zemeckis",
+      "cast": ["Tom Hanks", "Robin Wright", "Gary Sinise"],
+      "duration": "142 min",
+      "releaseDate": "1994-07-06",
+      "country": "USA",
+      "language": "English",
+      "budget": "$55 million",
+      "boxOffice": "$677.9 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "HeartWarming",
+          "rating": 5,
+          "comment": "Emotional journey! Tom Hanks delivers perfectly.",
+          "date": "2024-01-14"
+        },
+        {
+          "id": 2,
+          "user": "ClassicFan",
+          "rating": 4,
+          "comment": "Tom Hanks at his best. Heartwarming story.",
+          "date": "2024-01-11"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Avatar",
+      "year": 2009,
+      "genre": "Sci-Fi",
+      "rating": 7.9,
+      "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=450&fit=crop&crop=entropy",
+      "description": "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+      "director": "James Cameron",
+      "cast": ["Sam Worthington", "Zoe Saldana", "Sigourney Weaver"],
+      "duration": "162 min",
+      "releaseDate": "2009-12-18",
+      "country": "USA",
+      "language": "English",
+      "budget": "$237 million",
+      "boxOffice": "$2.847 billion",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "VisualFeast",
+          "rating": 4,
+          "comment": "Stunning visuals and world-building!",
+          "date": "2024-02-01"
+        },
+        {
+          "id": 2,
+          "user": "SciFiLover",
+          "rating": 3,
+          "comment": "Amazing effects, predictable story.",
+          "date": "2024-01-29"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Gladiator",
+      "year": 2000,
+      "genre": "Action",
+      "rating": 8.5,
+      "poster": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300&h=450&fit=crop&crop=faces",
+      "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+      "director": "Ridley Scott",
+      "cast": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+      "duration": "155 min",
+      "releaseDate": "2000-05-05",
+      "country": "USA",
+      "language": "English",
+      "budget": "$103 million",
+      "boxOffice": "$460.5 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "EpicFan",
+          "rating": 5,
+          "comment": "Are you not entertained? Masterpiece!",
+          "date": "2024-02-02"
+        },
+        {
+          "id": 2,
+          "user": "HistoryBuff",
+          "rating": 4,
+          "comment": "Great action and Russell Crowe's performance.",
+          "date": "2024-01-31"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Titanic",
+      "year": 1997,
+      "genre": "Romance",
+      "rating": 7.9,
+      "poster": "https://images.unsplash.com/photo-1544654803-b69140b285a1?w=300&h=450&fit=crop&crop=faces",
+      "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+      "director": "James Cameron",
+      "cast": ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane"],
+      "duration": "194 min",
+      "releaseDate": "1997-12-19",
+      "country": "USA",
+      "language": "English",
+      "budget": "$200 million",
+      "boxOffice": "$2.257 billion",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "RomanceFan",
+          "rating": 5,
+          "comment": "Epic love story! Never let go!",
+          "date": "2024-02-03"
+        },
+        {
+          "id": 2,
+          "user": "DramaQueen",
+          "rating": 4,
+          "comment": "Beautiful and tragic. Cameron's vision.",
+          "date": "2024-02-01"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "The Shawshank Redemption",
+      "year": 1994,
+      "genre": "Drama",
+      "rating": 9.3,
+      "poster": "https://images.unsplash.com/photo-1489599511551-8146c4e10ab8?w=300&h=450&fit=crop&crop=entropy",
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "director": "Frank Darabont",
+      "cast": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+      "duration": "142 min",
+      "releaseDate": "1994-09-23",
+      "country": "USA",
+      "language": "English",
+      "budget": "$25 million",
+      "boxOffice": "$28.3 million",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "DramaLover",
+          "rating": 5,
+          "comment": "Perfect film. Hope and friendship.",
+          "date": "2024-02-04"
+        },
+        {
+          "id": 2,
+          "user": "ClassicCinema",
+          "rating": 5,
+          "comment": "Greatest film ever made. Timeless.",
+          "date": "2024-02-02"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Joker",
+      "year": 2019,
+      "genre": "Thriller",
+      "rating": 8.4,
+      "poster": "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=300&h=450&fit=crop&crop=entropy",
+      "description": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime.",
+      "director": "Todd Phillips",
+      "cast": ["Joaquin Phoenix", "Robert De Niro", "Zazie Beetz"],
+      "duration": "122 min",
+      "releaseDate": "2019-10-04",
+      "country": "USA",
+      "language": "English",
+      "budget": "$70 million",
+      "boxOffice": "$1.078 billion",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "DarkFan",
+          "rating": 5,
+          "comment": "Joaquin Phoenix's performance is incredible!",
+          "date": "2024-02-05"
+        },
+        {
+          "id": 2,
+          "user": "PsychoAnalyst",
+          "rating": 4,
+          "comment": "Disturbing but brilliant character study.",
+          "date": "2024-02-03"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "genre": "Action",
+      "rating": 8.4,
+      "poster": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300&h=450&fit=crop&crop=entropy",
+      "description": "After the devastating events of Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more.",
+      "director": "Anthony Russo, Joe Russo",
+      "cast": ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
+      "duration": "181 min",
+      "releaseDate": "2019-04-26",
+      "country": "USA",
+      "language": "English",
+      "budget": "$356 million",
+      "boxOffice": "$2.798 billion",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "MarvelFan",
+          "rating": 5,
+          "comment": "Epic conclusion! I am Iron Man.",
+          "date": "2024-02-06"
+        },
+        {
+          "id": 2,
+          "user": "ActionSeeker",
+          "rating": 4,
+          "comment": "Satisfying end to the saga.",
+          "date": "2024-02-04"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "MovieFan2024",
+      "email": "moviefan@example.com",
+      "favoriteGenres": ["Sci-Fi", "Action"],
+      "joinDate": "2024-01-01"
+    },
+    {
+      "id": 2,
+      "username": "CinemaLover",
+      "email": "cinema@example.com",
+      "favoriteGenres": ["Drama", "Thriller"],
+      "joinDate": "2024-01-02"
+    }
+  ],
+  "genres": [
+    "All", "Action", "Drama", "Sci-Fi", "Crime", "Thriller", "Romance"
+  ],
+  "trending": [5, 11, 12],
+  "featured": [10, 1, 3]
+}
