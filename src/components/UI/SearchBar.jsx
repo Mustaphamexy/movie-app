@@ -14,7 +14,7 @@ const SearchBar = ({ placeholder = "Search movies..." }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative">
+    <form onSubmit={handleSubmit} className="relative w-full">
       <input
         type="text"
         value={searchTerm}

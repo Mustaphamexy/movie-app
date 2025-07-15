@@ -45,3 +45,27 @@ export const getMoviesByGenre = async (genreId, page = 1) => {
   const res = await API.get(`/movies/genre/${genreId}?page=${page}`);
   return res.data;
 };
+
+// Discover movies with filters
+export const discoverMovies = async (params) => {
+  const {
+    query = '',
+    with_genres = '',
+    'vote_average.gte': voteGte = '',
+    primary_release_year = '',
+    sort_by = 'popularity.desc',
+    page = 1
+  } = params;
+
+  const res = await API.get('/movies/discover', {
+    params: {
+      query,
+      with_genres,
+      'vote_average.gte': voteGte,
+      primary_release_year,
+      sort_by,
+      page
+    }
+  });
+  return res.data;
+};
